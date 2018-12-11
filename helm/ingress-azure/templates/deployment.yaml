@@ -26,6 +26,8 @@ spec:
         {{- end }}
     spec:
       serviceAccountName: {{ template "application-gateway-kubernetes-ingress.serviceaccountname" . }}
+      nodeSelector:
+        beta.kubernetes.io/os: linux
       containers:
       - name: {{ .Chart.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
